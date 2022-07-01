@@ -47,10 +47,11 @@ const createUser = async (email, password) => {
     return [false, 'Unable to sign you up'];
   }
   try {
-    await sendMail({
+   let mail= await sendMail({
       to: email,
       OTP: otpGenerated,
     });
+  console.log(mail,"ooo")
     return [true, newUser];
   } catch (error) {
     return [false, 'Unable to sign up, Please try again later', error];
